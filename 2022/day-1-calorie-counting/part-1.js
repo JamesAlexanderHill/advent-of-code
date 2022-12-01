@@ -1,7 +1,8 @@
 const fs = require('fs');
 const filename = process.argv[2];
+if (!filename) throw 'no file name';
 
-fs.readFile('input.txt', 'utf8', function(err, data) {
+fs.readFile(filename, 'utf8', function(err, data) {
     if (err) throw err;
     const arr = data.split('\n');
     let elfIndex = 0;
@@ -20,7 +21,5 @@ fs.readFile('input.txt', 'utf8', function(err, data) {
     }
     const largestElement = Math.max(...collapsedArr);
 
-    console.log(arr);
-    console.log(collapsedArr);
     console.log(largestElement);
 });

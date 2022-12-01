@@ -1,7 +1,8 @@
 const fs = require('fs');
 const filename = process.argv[2];
+if (!filename) throw 'no file name';
 
-fs.readFile('input.txt', 'utf8', function(err, data) {
+fs.readFile(filename, 'utf8', function(err, data) {
     if (err) throw err;
     const arr = data.split('\n');
     let elfIndex = 0;
@@ -19,8 +20,6 @@ fs.readFile('input.txt', 'utf8', function(err, data) {
         }
     }
     const sortedCollapsedArr = collapsedArr.sort(function(a, b){return b-a});
-    console.log(sortedCollapsedArr)
 
-    // console.log(sortedCollapsedArr[0] + sortedCollapsedArr[1] + sortedCollapsedArr[2]);
     console.log(sortedCollapsedArr.slice(0, 3).reduce((acc, curr) => acc + curr, 0));
 });
